@@ -2,18 +2,26 @@ import React, { useState } from 'react';
 import CatCard from './CatCard';
 import './App.css';
 
-interface Cat{name: string, age:number, size: number, hunger: number};
+interface Cat{name: string, age:number, size: number, hunger: number, color: string};
 
 function App() {
   const [cats, setCats] = useState([
-    { name: "Katty", age: 4, size: 40, hunger: 5 },
-    { name: "Murzik", age: 2, size: 30, hunger: 3 },
-    { name: "Barsik", age: 6, size: 45, hunger: 4 },
-    { name: "Pushok", age: 3, size: 35, hunger: 2 },
-    { name: "Ryzhik", age: 5, size: 40, hunger: 5 }
+    { name: "Katty", age: 4, size: 40, hunger: 5, color: "black"},
+    { name: "Murzik", age: 2, size: 30, hunger: 3, color: "red"},
+    { name: "Barsik", age: 6, size: 45, hunger: 4, color: "white"},
+    { name: "Pushok", age: 3, size: 35, hunger: 2, color: "white"},
+    { name: "Ryzhik", age: 5, size: 40, hunger: 5, color: "red" }
   ]);
   const [newName, setNewName] = useState('');
   const [selectedCatIndex, setSelectedCatIndex] = useState(0);
+
+  // function colorCat(cat: Cat): Cat {
+  //   if (condition) {
+      
+  //   }
+  // }
+
+  
 
   function agePlus(cat: Cat): Cat {
     return { ...cat, age: cat.age + 1 };
