@@ -14,14 +14,19 @@ function App() {
   ]);
   const [newName, setNewName] = useState('');
   const [selectedCatIndex, setSelectedCatIndex] = useState(0);
+  const [selectedColor, setSelectedColor] = useState('');
 
-  // function colorCat(cat: Cat): Cat {
-  //   if (condition) {
-      
-  //   }
-  // }
-
-  
+  const changeSelectedCatColor = () => {
+    if (selectedColor) {
+      const updatedCats = [...cats];
+      const selectedCat = updatedCats[selectedCatIndex];
+      updatedCats[selectedCatIndex] = { ...selectedCat, color: selectedColor };
+      setCats(updatedCats);
+      alert(`Колір кота ${selectedCat.name} змінено на ${selectedColor}!`);
+    } else {
+      alert('Будь ласка, оберіть колір для кота.');
+    }
+  };
 
   function agePlus(cat: Cat): Cat {
     return { ...cat, age: cat.age + 1 };
@@ -99,6 +104,17 @@ function App() {
         <button onClick={selectedCatAgePlus}>День народження</button>
         <button onClick={selectedCatPlay}>Погратися з котом</button>
         <button onClick={selectedCatFeed}>Погодувати кота</button>
+        <div className="changeCatColorDiv">
+          <select className='selectColorCat' value={selectedColor} onChange={(e) => setSelectedColor(e.target.value)}>
+            <option value="">Оберіть колір</option>
+            <option value="black">Чорний</option>
+            <option value="red">Червоний</option>
+            <option value="white">Білий</option>
+          </select>
+          <button className="changeCatColor" onClick={changeSelectedCatColor}>
+            Змінити колір кота
+          </button>
+        </div>
         <div className="renameCatDiv">
           <input type="text" value={newName} onChange={(e) => setNewName(e.target.value)} placeholder="Введіть нове ім'я"/>
           <button className="renameCat" onClick={selectedCatRename}>Перейменувати кота</button>

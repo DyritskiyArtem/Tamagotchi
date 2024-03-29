@@ -15,6 +15,10 @@ function selectedCatColor() {
 
   if (cat.color == "black") {
     src = "black.png";
+  }if (cat.color == "red") {
+    src = "red.png";
+  }if (cat.color == "white") {
+    src = "white.png";
   }
 
   return src;
@@ -29,7 +33,7 @@ function selectedCatColor() {
           <p>Розмір: {cat.size}</p>
           <p>Ситість: {cat.hunger}</p>
         </div>
-        <img src={selectedCatColor()}/>
+        <img className='catImg' src={selectedCatColor()}/>
       </div>
     </div>
   );
