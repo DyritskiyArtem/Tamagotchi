@@ -2,19 +2,25 @@ import React, { useState } from 'react';
 import CatCard from './CatCard';
 import './App.css';
 
-interface Cat{name: string, age:number, size: number, hunger: number, color: string};
+interface Cat{name: string, age:number, size: number, hunger: number, color: Color};
+
+enum Color{
+  Black = "black",
+  Red = "red",
+  White = "white"
+}
 
 function App() {
-  const [cats, setCats] = useState([
-    { name: "Katty", age: 4, size: 40, hunger: 5, color: "black"},
-    { name: "Murzik", age: 2, size: 30, hunger: 3, color: "red"},
-    { name: "Barsik", age: 6, size: 45, hunger: 4, color: "white"},
-    { name: "Pushok", age: 3, size: 35, hunger: 2, color: "white"},
-    { name: "Ryzhik", age: 5, size: 40, hunger: 5, color: "red" }
+  const [cats, setCats] = useState<Cat[]>([
+    { name: "Katty", age: 4, size: 40, hunger: 5, color: Color.Black},
+    { name: "Murzik", age: 2, size: 30, hunger: 3, color: Color.Red},
+    { name: "Barsik", age: 6, size: 45, hunger: 4, color: Color.White},
+    { name: "Pushok", age: 3, size: 35, hunger: 2, color: Color.White},
+    { name: "Ryzhik", age: 5, size: 40, hunger: 5, color: Color.Red }
   ]);
   const [newName, setNewName] = useState('');
   const [selectedCatIndex, setSelectedCatIndex] = useState(0);
-  const [selectedColor, setSelectedColor] = useState('');
+  const [selectedColor, setSelectedColor] = useState<Color>();
 
   const changeSelectedCatColor = () => {
     if (selectedColor) {
@@ -105,11 +111,10 @@ function App() {
         <button onClick={selectedCatPlay}>Погратися з котом</button>
         <button onClick={selectedCatFeed}>Погодувати кота</button>
         <div className="changeCatColorDiv">
-          <select className='selectColorCat' value={selectedColor} onChange={(e) => setSelectedColor(e.target.value)}>
-            <option value="">Оберіть колір</option>
-            <option value="black">Чорний</option>
-            <option value="red">Червоний</option>
-            <option value="white">Білий</option>
+          <select className='selectColorCat' value={selectedColor} onChange={(e) => setSelectedColor(e.target.value as Color)}>
+            {Object
+            .keys(Color)
+            .map(color => <option value={color.toLowerCase()} key={color}>{color}</option>)}  
           </select>
           <button className="changeCatColor" onClick={changeSelectedCatColor}>
             Змінити колір кота
