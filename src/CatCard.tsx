@@ -19,6 +19,10 @@ function selectedCatColor() {
     src = "red.png";
   }if (cat.color == "white") {
     src = "white.png";
+  }if (cat.color == "grey") {
+    src = "grey.png";
+  }if (cat.color == "spotted") {
+    src = "spotted.png";
   }
 
   return src;

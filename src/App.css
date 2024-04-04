@@ -1,6 +1,6 @@
 body {
   background-color: #ADD8E6;
-  margin: 0;
+  margin: 0 2%;
   padding: 0;
   height: 100vh;
   display: flex;
@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-  margin-top: 15%;
+  margin-top: 0.5%;
   padding: 1px;
   border-radius: 8px;
   text-align: center; 
@@ -42,14 +42,14 @@ body {
 }
 
 .selectCat{
+  margin-top: 1%;
   margin-bottom: 1%;
 }
 
 .buttons{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 20px;
-  padding: 0 30%;
 }
 
 button{

@@ -7,7 +7,14 @@ interface Cat{name: string, age:number, size: number, hunger: number, color: Col
 enum Color{
   Black = "black",
   Red = "red",
-  White = "white"
+  White = "white",
+  Grey = "grey",
+  Spotted = "spotted"
+}
+
+enum Theme {
+  Light = "light",
+  Dark = "dark"
 }
 
 function App() {
@@ -15,12 +22,19 @@ function App() {
     { name: "Katty", age: 4, size: 40, hunger: 5, color: Color.Black},
     { name: "Murzik", age: 2, size: 30, hunger: 3, color: Color.Red},
     { name: "Barsik", age: 6, size: 45, hunger: 4, color: Color.White},
-    { name: "Pushok", age: 3, size: 35, hunger: 2, color: Color.White},
-    { name: "Ryzhik", age: 5, size: 40, hunger: 5, color: Color.Red }
+    { name: "Pushok", age: 3, size: 35, hunger: 2, color: Color.Spotted},
+    { name: "Ryzhik", age: 5, size: 40, hunger: 5, color: Color.Grey}
   ]);
   const [newName, setNewName] = useState('');
   const [selectedCatIndex, setSelectedCatIndex] = useState(0);
   const [selectedColor, setSelectedColor] = useState<Color>();
+  const [currentTheme, setCurrentTheme] = useState<Theme>(Theme.Light);
+
+  const toggleTheme = () => {
+    const newTheme = currentTheme === Theme.Light ? Theme.Dark : Theme.Light;
+    setCurrentTheme(newTheme);
+    console.log(`Тема змінена на ${newTheme}`);
+  };
 
   const changeSelectedCatColor = () => {
     if (selectedColor) {
@@ -110,15 +124,14 @@ function App() {
         <button onClick={selectedCatAgePlus}>День народження</button>
         <button onClick={selectedCatPlay}>Погратися з котом</button>
         <button onClick={selectedCatFeed}>Погодувати кота</button>
+        <button onClick={toggleTheme}>Змінити тему</button>
         <div className="changeCatColorDiv">
           <select className='selectColorCat' value={selectedColor} onChange={(e) => setSelectedColor(e.target.value as Color)}>
             {Object
             .keys(Color)
             .map(color => <option value={color.toLowerCase()} key={color}>{color}</option>)}  
           </select>
-          <button className="changeCatColor" onClick={changeSelectedCatColor}>
-            Змінити колір кота
-          </button>
+          <button className="changeCatColor" onClick={changeSelectedCatColor}>Змінити колір кота</button>
         </div>
         <div className="renameCatDiv">
           <input type="text" value={newName} onChange={(e) => setNewName(e.target.value)} placeholder="Введіть нове ім'я"/>
