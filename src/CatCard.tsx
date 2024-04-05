@@ -1,32 +1,14 @@
 import React from 'react';
 import './App.css';
+import {Color} from './App';
 
 interface CatCardProps {
-  cats: { name: string; age: number; size: number; hunger: number, color: string}[];
+  cats: { name: string; age: number; size: number; hunger: number, color: Color}[];
   selectedCatIndex: number;
 }
 
 function CatCard(props: CatCardProps) {
   const cat = props.cats[props.selectedCatIndex];
-
-function selectedCatColor() {
-  
-  let src = "";
-
-  if (cat.color == "black") {
-    src = "black.png";
-  }if (cat.color == "red") {
-    src = "red.png";
-  }if (cat.color == "white") {
-    src = "white.png";
-  }if (cat.color == "grey") {
-    src = "grey.png";
-  }if (cat.color == "spotted") {
-    src = "spotted.png";
-  }
-
-  return src;
-}  
 
   return (
     <div className="container">
@@ -37,7 +19,7 @@ function selectedCatColor() {
           <p>Розмір: {cat.size}</p>
           <p>Ситість: {cat.hunger}</p>
         </div>
-        <img className='catImg' src={selectedCatColor()}/>
+        <img className='catImg' src={`${cat.color}.png`}/>
       </div>
     </div>
   );

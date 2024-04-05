@@ -4,7 +4,7 @@ import './App.css';
 
 interface Cat{name: string, age:number, size: number, hunger: number, color: Color};
 
-enum Color{
+export enum Color{
   Black = "black",
   Red = "red",
   White = "white",
@@ -35,6 +35,14 @@ function App() {
     setCurrentTheme(newTheme);
     console.log(`Тема змінена на ${newTheme}`);
   };
+
+  function getAppClassName(): string {
+    if (currentTheme == Theme.Light) {
+      return "";
+    }else{
+      return "dark";  
+    }
+  }
 
   const changeSelectedCatColor = () => {
     if (selectedColor) {
@@ -111,7 +119,7 @@ function App() {
   }
 
   return (
-    <div className="container">
+    <div className={`container ${getAppClassName()}`}>
       <div className="catCards">
         {cats.map((cat, index) => (
           <CatCard key={index} cats={cats} selectedCatIndex={index} />
@@ -134,7 +142,7 @@ function App() {
           <button className="changeCatColor" onClick={changeSelectedCatColor}>Змінити колір кота</button>
         </div>
         <div className="renameCatDiv">
-          <input type="text" value={newName} onChange={(e) => setNewName(e.target.value)} placeholder="Введіть нове ім'я"/>
+          <input className='renameInp' type="text" value={newName} onChange={(e) => setNewName(e.target.value)} placeholder="Введіть нове ім'я"/>
           <button className="renameCat" onClick={selectedCatRename}>Перейменувати кота</button>
         </div>
       </div>

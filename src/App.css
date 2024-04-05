@@ -1,58 +1,72 @@
 body {
   background-color: #ADD8E6;
-  margin: 0 2%;
+  margin: 0;
   padding: 0;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.container.dark {
+  background-color: #1c1c1c;
+  color: #e6e6e6;
 }
 
 .container {
-  margin-top: 0.5%;
-  padding: 1px;
-  border-radius: 8px;
-  text-align: center; 
-}
-
-.content{
+  margin-top: 0;
+  padding: 0;
+  border-radius: 0;
+  text-align: center;
+  width: 100vw;
+  height: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
 }
 
-.catName{
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.catName {
   font-size: 60px;
   font-weight: 900;
   margin-top: 3px;
   margin-bottom: 1%;
 }
 
-.infoCat{
+.infoCat {
   font-size: 20px;
   font-weight: 600;
 }
 
-.catCards{
+.catCards {
   display: flex;
   gap: 3%;
   align-items: center;
   justify-content: center;
 }
 
-.selectCat{
+.selectCat {
   margin-top: 1%;
   margin-bottom: 1%;
 }
 
-.buttons{
+.buttons {
   display: flex;
   flex-direction: row;
   gap: 20px;
+  margin-bottom: 20px;
+  padding: 0 40px;
 }
 
-button{
+button {
   border: none;
   padding: 15px 25px;
   border-radius: 30px;
@@ -61,12 +75,26 @@ button{
   transition: all .10s ease-in;
 }
 
-button:hover{
+button:hover {
   cursor: pointer;
   background-color: #dcdada;
 }
 
-.changeCatColorDiv{
+.container.dark button {
+  background-color: #616161;
+  color: #e6e6e6;
+}
+
+.container.dark .changeCatColor {
+  background-color: #616161;
+  color: #e6e6e6;
+}
+
+.container.dark button:hover {
+  background-color: #757575;
+}
+
+.changeCatColorDiv {
   background-color: #efefef;
   display: flex;
   flex-direction: column;
@@ -74,7 +102,11 @@ button:hover{
   border-radius: 30px;
 }
 
-.selectColorCat{
+.container.dark .changeCatColorDiv {
+  background-color: #616161;
+}
+
+.selectColorCat {
   border: none;
   padding: 15px 25px;
   border-radius: 30px;
@@ -82,7 +114,12 @@ button:hover{
   font-size: 20px;
 }
 
-.renameCatDiv{
+.container.dark .selectColorCat{
+  background-color: #2b2b2b;
+  color: #6c6c6c;
+}
+
+.renameCatDiv {
   background-color: #efefef;
   display: flex;
   flex-direction: column;
@@ -90,12 +127,32 @@ button:hover{
   border-radius: 30px;
 }
 
-input{
+.container.dark .renameCatDiv {
+  background-color: #616161;
+}
+
+.container.dark .renameCat{
+  background-color: #616161;
+}
+
+.renameInp,
+input {
   border: none;
   padding: 15px 20px;
   border-radius: 30px;
   font-weight: 900;
   font-size: 20px;
+  background-color: #ADD8E6;
+}
+
+.container.dark .renameInp {
+  background-color: #2b2b2b;
+  color: #e6e6e6;
+}
+
+.container.dark input {
+  background-color: #1c1c1c;
+  color: #e6e6e6;
 }
 
 .catImg {
